@@ -18,6 +18,9 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "money")
+    private double money;
+
     @OneToMany(mappedBy = "number_bet_id")
     List<NumberBet> numberBets;
 
@@ -65,5 +68,13 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
     }
 }

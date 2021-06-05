@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 public interface RouletteRepository{
-    void save(Roulette roulette);
+    Roulette save(Roulette roulette);
     Map<String, Roulette> findAll();
-    Roulette getById(int id);
+    Roulette findById(int id);
     void update(Roulette roulette);
 
 }

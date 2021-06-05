@@ -7,14 +7,14 @@ import javax.persistence.*;
 public class ColorBet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "color_bet_id")
+    @Column(name = "id")
     private int id;
 
     @Column(name = "color")
     private String color;
 
     @Column(name = "money")
-    private int money;
+    private double money;
 
     @ManyToOne
     @JoinColumn(name = "id")
@@ -25,6 +25,14 @@ public class ColorBet {
     private Roulette roulette;
 
     public ColorBet() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public User getUser() {
@@ -43,14 +51,6 @@ public class ColorBet {
         this.roulette = roulette;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getColor() {
         return color;
     }
@@ -59,11 +59,24 @@ public class ColorBet {
         this.color = color;
     }
 
-    public int getMoney() {
+    public double getMoney() {
         return money;
     }
 
-    public void setMoney(int money) {
+    public void setMoney(double money) {
         this.money = money;
+    }
+
+    public boolean bet() {
+        if(this.color.equals("rojo")){
+            int n = (int)(Math.random() * (36));
+            if(n % 2 == 0) return true;
+            return false;
+        }else if(this.color.equals("negro")){
+            int n = (int)(Math.random() * (36));
+            if(n % 2 != 0) return true;
+            return false;
+        }
+        return false;
     }
 }

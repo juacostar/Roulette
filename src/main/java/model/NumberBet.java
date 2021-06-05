@@ -8,14 +8,14 @@ import java.io.Serializable;
 public class NumberBet implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "number_bet_id")
+    @Column(name = "id")
     private int id;
 
     @Column(name = "number")
     private  int number;
 
     @Column(name = "money")
-    private int money;
+    private double money;
 
     @ManyToOne
     @JoinColumn(name = "id")
@@ -26,6 +26,14 @@ public class NumberBet implements Serializable {
     private Roulette roulette;
 
     public NumberBet() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public User getUser() {
@@ -44,14 +52,6 @@ public class NumberBet implements Serializable {
         this.roulette = roulette;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public int getNumber() {
         return number;
     }
@@ -60,11 +60,17 @@ public class NumberBet implements Serializable {
         this.number = number;
     }
 
-    public int getMoney() {
+    public double getMoney() {
         return money;
     }
 
-    public void setMoney(int money) {
+    public void setMoney(double money) {
         this.money = money;
+    }
+
+    public boolean bet() {
+        int n = (int)(Math.random() * (36));
+        if(n == this.number) return true;
+        return false;
     }
 }

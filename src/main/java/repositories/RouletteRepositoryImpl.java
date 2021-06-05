@@ -17,8 +17,9 @@ public class RouletteRepositoryImpl implements RouletteRepository{
     }
 
     @Override
-    public void save(Roulette roulette){
+    public Roulette save(Roulette roulette){
         hashOperations.put("ROULETTE", roulette.getId(), roulette);
+        return  roulette;
     }
 
     @Override
@@ -27,7 +28,7 @@ public class RouletteRepositoryImpl implements RouletteRepository{
     }
 
     @Override
-    public Roulette getById(int id) {
+    public Roulette findById(int id) {
         return (Roulette)hashOperations.get("ROULETTE", id);
     }
 
